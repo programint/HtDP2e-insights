@@ -12,7 +12,11 @@
 
 ; ===提醒文案
 (define REMIND-MSG 
-  (place-image (text "程序已停止 \n\n   注意:\n\n   x 坐标值位于 [0,297] \n   y 坐标值位于 [0,300]" 14 " black") 150 200 MTS))
+  (place-image (text "程序已停止 \n\n   注意:\n\n   x 坐标值位于 [0,297] \n   y 坐标值位于 [0,300]" 
+                                  14
+                                   " black")
+                          150 200
+                          MTS))
 
 ; \n 是指换行
 
@@ -80,6 +84,7 @@
 
 (check-expect (scene+dot (make-posn 0 0))
               (place-image DOT 0 0 MTS)) 
+
 (check-expect (scene+dot (make-posn 298 301))
               REMIND-MSG)  
 
