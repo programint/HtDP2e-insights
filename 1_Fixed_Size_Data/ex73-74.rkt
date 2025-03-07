@@ -1,6 +1,6 @@
 ; 73-74
 
-  ; 这两题目是一个题目，代码放在一起
+; 这两题目是一个题目，代码放在一起
 
 ; A Posn represents the state of the world
 
