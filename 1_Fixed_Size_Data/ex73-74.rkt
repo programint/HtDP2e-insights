@@ -9,11 +9,13 @@
 (define MTS (empty-scene 300 300))
 (define DOT (circle 3 "solid" "red"))
 
+
 ; ===提醒文案
 (define REMIND-MSG 
   (place-image (text "程序已停止 \n\n   注意:\n\n   x 坐标值位于 [0,297] \n   y 坐标值位于 [0,300]" 14 " black") 150 200 MTS))
 
 ; \n 是指换行
+
 
 ; 时钟函数
 ; 时钟滴答一次，红点 x + 3，y 值保持不变
@@ -39,7 +41,6 @@
 ; poson number number mouseevent -> posn 
 ; 鼠标点击，重置红点
 ; 题目中并没有详细解释，重置是什么定义，从代码来看，所谓的重置：鼠标点在那里，红点就出现在那里
-
 (check-expect
   (reset-dot (make-posn 10 20) 29 31 "button-down")
   (make-posn 29 31))
