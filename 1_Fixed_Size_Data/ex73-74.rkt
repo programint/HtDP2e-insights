@@ -1,5 +1,6 @@
 ; 73-74
-; 这两个题目是一个题目，放在一起。
+
+  ; 这两题目是一个题目，代码放在一起
 
 ; A Posn represents the state of the world
 
@@ -10,7 +11,8 @@
 
 ; ===提醒文案
 (define REMIND-MSG 
-  (place-image (text "程序已停止\n\n注意:\n\nx 坐标值位于 [0,297]\ny 坐标值位于 [0,300]" 14 " black") 150 200 MTS))
+  (place-image (text "程序已停止 \n\n   注意:\n\n   x 坐标值位于 [0,297] \n   y 坐标值位于 [0,300]" 14 " black") 150 200 MTS))
+; \n 是指换行
 
 ; 时钟函数
 ; 时钟滴答一次，红点 x + 3，y 值保持不变
@@ -23,12 +25,11 @@
 (define (posn-up-x p n )
   (make-posn n (posn-y p)))
 
-; 这个题目其实比较简单，这里引入了更新器，显得有点多余，但这里的目的，是为了引入更新器的概念
+; 这题目比较简单，引入了更新器，有点多余。估计该题目的意图，正是为了引入更新器这概念。
 ; 本题中
 ; 时钟函数：传递参数给更新器
 ; 更新器：承担了数据计算的任务
 ; 二者配合完成了任务
-
 ; 复杂的程序，是不是也是这样子，待验证
 
 ; 鼠标事件函数
@@ -55,13 +56,11 @@
 
 ; 绘制图像函数
 ; posn-> image 
-
 (check-expect (scene+dot (make-posn 30 20))
   (place-image DOT 30 20 MTS))
 
 (define (draw-dot-on-scene p)
   (place-image DOT (posn-x p) (posn-y p) MTS))
-
 
 (check-expect (in-bounds? (make-posn 0 0)) #true)
 (check-expect (in-bounds? (make-posn 297  300)) #true)
@@ -72,7 +71,6 @@
   (and
     (>=(posn-x p) 0) (<= (posn-x p) 297)
     (>= (posn-y p) 0) (<= (posn-y p) 300)))
-
 
 (check-expect (scene+dot (make-posn 0 0))
               (place-image DOT 0 0 MTS)) 
@@ -90,12 +88,12 @@
 
 (define (end-condition? p)
   (> (posn-x p) 298))
-
 ; 注
 ; 显示提醒文案之后，停止函数才停止程序。
 
 ; 定义世界程序
-; Posn -> Posn 
+; Posn -> Posn
+
 (define (main p)
   (big-bang p
     [on-tick x+]
@@ -104,3 +102,4 @@
     [stop-when end-condition?]))
     
 (main (make-posn 10 150 ))
+
