@@ -44,7 +44,7 @@
 ; 鼠标事件函数
 ; poson number number mouseevent -> posn 
 ; 鼠标点击，重置红点
-; 题目中并没有详细解释，重置是什么定义，从代码来看，所谓的重置：鼠标点在那里，红点就出现在那里
+; 题目中并没有详细解释什么是重置，从书中代码来看，所谓重置：鼠标点在那里，红点就出现在那里
 (check-expect
   (reset-dot (make-posn 10 20) 29 31 "button-down")
   (make-posn 29 31))
