@@ -12,6 +12,7 @@
 ; ===提醒文案
 (define REMIND-MSG 
   (place-image (text "程序已停止 \n\n   注意:\n\n   x 坐标值位于 [0,297] \n   y 坐标值位于 [0,300]" 14 " black") 150 200 MTS))
+
 ; \n 是指换行
 
 ; 时钟函数
@@ -19,6 +20,7 @@
 ; Posn -> Posn
 (define (x+ p)
   (posn-up-x p (+ (posn-x p) 3)))
+
 
 ; 定义更新器
 ; Posn Number -> Posn
@@ -31,6 +33,7 @@
 ; 更新器：承担了数据计算的任务
 ; 二者配合完成了任务
 ; 复杂的程序，是不是也是这样子，待验证
+
 
 ; 鼠标事件函数
 ; poson number number mouseevent -> posn 
@@ -50,9 +53,11 @@
     [(mouse=? me "button-down") (make-posn x y)]
     [else p]))
 
-; 注：鼠标事件函数这里，按下鼠标后，立即重置红点，其实不算太严谨，更为严谨的方式
+; 注
+; 鼠标事件函数这里，按下鼠标后，立即重置红点，其实不算太严谨，更为严谨的方式
 ; 按下鼠标，再松开鼠标，这时才重置红点
 ; 但这样子，相对麻烦，而且这一点，也不是本题的重点，所以，还是采用书上的方法。
+
 
 ; 绘制图像函数
 ; posn-> image 
@@ -82,18 +87,20 @@
     [(in-bounds? p) (draw-dot-on-scene p)]
     [else REMIND-MSG]))
 
+
 ; 停止函数
 ; posn -> boolean 
 (check-expect (end-condition? (make-posn 10 300)) #false)
 
 (define (end-condition? p)
   (> (posn-x p) 298))
+
 ; 注
 ; 显示提醒文案之后，停止函数才停止程序。
 
+
 ; 定义世界程序
 ; Posn -> Posn
-
 (define (main p)
   (big-bang p
     [on-tick x+]
@@ -102,4 +109,3 @@
     [stop-when end-condition?]))
     
 (main (make-posn 10 150 ))
-
